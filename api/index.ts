@@ -20,6 +20,7 @@ app.use((req, res, next) => {
       const originalIP = req.ip;
       const reversedIP = originalIP.split('.').reverse().join('.');
       console.log(`Reversed IP Address: ${reversedIP}`);
+          res.send(`Reversed Origin IP Address: ${reversedIP}`);
     }
     next();
   });
@@ -29,16 +30,16 @@ app.listen(port, () => console.log("Server ready on port 3000."));
 module.exports = app;
 
 
-// Middleware to reverse the IP address, excluding localhost
-app.use((req, res, next) => {
-    // Check if the request is coming from localhost
-    if (req.ip !== '::1' && req.ip !== '127.0.0.1') {
-      const originalIP = req.ip;
-      const reversedIP = originalIP.split('.').reverse().join('.');
-      console.log(`Reversed IP Address: ${reversedIP}`);
-    }
-    next();
-  });
+// // Middleware to reverse the IP address, excluding localhost
+// app.use((req, res, next) => {
+//     // Check if the request is coming from localhost
+//     if (req.ip !== '::1' && req.ip !== '127.0.0.1') {
+//       const originalIP = req.ip;
+//       const reversedIP = originalIP.split('.').reverse().join('.');
+//       console.log(`Reversed IP Address: ${reversedIP}`);
+//     }
+//     next();
+//   });
 
 // app.get('/', (req, res) => {
 //     // Get the requester's IP address
